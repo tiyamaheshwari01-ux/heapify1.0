@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <title>HEAPIFY | Interactive Heap Sort Visualizer</title>
+  <link rel="stylesheet" href="STYLE.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Heapify home">
+        <span class="brand-mark">H</span>
+        <span>HEAPIFY<span class="brand-dot">.</span><small>DSA VISUALIZER</small></span>
+      </a>
+      <div class="topbar-right">
+        <span class="status-dot"></span><span class="status-label">INTERACTIVE LEARNING MODE</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow"><span></span> DATA STRUCTURES &amp; ALGORITHMS</div>
+        <h1>Understand the <span>Heap.</span><br>Master the Sort.</h1>
+        <p class="hero-copy">Explore Heap Sort one operation at a time. Build a Max Heap, follow every comparison, and watch your array become sorted.</p>
+      </section>
+
+      <section class="input-panel panel">
+        <div class="section-heading">
+          <div><span class="step-tag">01 / INPUT</span><h2>Build your array</h2></div>
+          <span class="panel-note">Enter 1–15 integers</span>
+        </div>
+        <label class="input-label" for="arrayInput">ARRAY ELEMENTS</label>
+        <div class="input-row">
+          <input id="arrayInput" type="text" value="40, 20, 60, 10, 30, 80, 50" placeholder="e.g. 40, 20, 60, 10, 30" autocomplete="off">
+          <button class="btn btn-primary" id="generateBtn"><span>▶</span> Generate Heap</button>
+          <button class="btn btn-secondary" id="randomBtn">↻ Random</button>
+        </div>
+        <p class="input-hint" id="inputHint">Separate numbers with commas or spaces. Negative numbers and duplicates are supported.</p>
+      </section>
+
+      <section class="stats-grid" aria-label="Algorithm statistics">
+        <article class="stat-card"><span class="stat-label">ARRAY SIZE</span><strong id="arraySize">7</strong><small>elements</small></article>
+        <article class="stat-card"><span class="stat-label">COMPARISONS</span><strong id="comparisons">0</strong><small>value checks</small></article>
+        <article class="stat-card"><span class="stat-label">SWAPS</span><strong id="swaps">0</strong><small>element exchanges</small></article>
+        <article class="stat-card"><span class="stat-label">CURRENT PHASE</span><strong class="phase-value" id="phase">Ready</strong><small id="completionStatus">Waiting to start</small></article>
+      </section>
+
+      <section class="visual-grid">
+        <article class="panel visual-panel">
+          <div class="visual-heading">
+            <div><span class="step-tag">02 / TREE STRUCTURE</span><h2>Binary Heap Tree</h2><p>Parent-child relationships in a Max Heap</p></div>
+            <span class="view-chip">TREE VIEW</span>
+          </div>
+          <div class="tree-legend legend">
+            <span><i class="legend-dot compare"></i>Compare</span>
+            <span><i class="legend-dot swap"></i>Swap</span>
+            <span><i class="legend-dot sorted"></i>Sorted</span>
+          </div>
+          <div id="heapTree" class="tree-stage"><div class="empty-state">Your heap tree will appear here.</div></div>
+        </article>
+
+        <article class="panel visual-panel">
+          <div class="visual-heading">
+            <div><span class="step-tag">03 / ARRAY STRUCTURE</span><h2>Array Visualization</h2><p>Watch elements move during sorting</p></div>
+            <span class="view-chip">ARRAY VIEW</span>
+          </div>
+          <div class="tree-legend legend">
+            <span><i class="legend-dot compare"></i>Compare</span>
+            <span><i class="legend-dot swap"></i>Swap</span>
+            <span><i class="legend-dot sorted"></i>Sorted</span>
+          </div>
+          <div id="arrayBars" class="bars-stage"><div class="empty-state">Your array bars will appear here.</div></div>
+          <div class="array-caption"><span>INDEX 0</span><span>ARRAY POSITION →</span><span id="lastIndex">INDEX 6</span></div>
+        </article>
+      </section>
+
+      <section class="panel controls-panel">
+        <div class="section-heading">
+          <div><span class="step-tag">04 / STEP CONTROLS</span><h2>Control the algorithm</h2></div>
+          <span id="stepCounter" class="step-counter">Step 0 of 0</span>
+        </div>
+        <div class="progress-track"><div id="progressBar" class="progress-fill"></div></div>
+        <div class="control-row">
+          <div class="button-group">
+            <button class="btn btn-secondary" id="resetBtn" disabled>↺ Reset</button>
+            <button class="btn btn-secondary" id="previousBtn" disabled>← Previous</button>
+            <button class="btn btn-play" id="playBtn" disabled>▶ Play</button>
+            <button class="btn btn-secondary" id="nextBtn" disabled>Next →</button>
+          </div>
+          <label class="speed-control" for="speed"><span>ANIMATION SPEED</span><input id="speed" type="range" min="1" max="5" value="3"><b id="speedLabel">Normal</b></label>
+        </div>
+      </section>
+
+      <section class="bottom-grid">
+        <article class="panel explanation-panel">
+          <span class="step-tag">05 / WHAT IS HAPPENING?</span>
+          <h2>Step explanation</h2>
+          <div class="explanation-content"><span class="explanation-icon">✦</span><p id="explanation">Enter an array and select Generate Heap to begin the visualization.</p></div>
+        </article>
+        <article class="panel complexity-panel">
+          <span class="step-tag">ALGORITHM ANALYSIS</span>
+          <h2>Complexity</h2>
+          <div class="complexity-row"><span>Best case</span><strong>O(n log n)</strong></div>
+          <div class="complexity-row"><span>Average case</span><strong>O(n log n)</strong></div>
+          <div class="complexity-row"><span>Worst case</span><strong>O(n log n)</strong></div>
+          <div class="complexity-row"><span>Auxiliary space</span><strong>O(1)</strong></div>
+        </article>
+      </section>
+    </main>
+
+    <footer><span>HEAPIFY <b>·</b> Learn by seeing every step.</span><span>Built with HTML · CSS · JavaScript</span></footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
